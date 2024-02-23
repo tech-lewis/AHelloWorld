@@ -1,51 +1,49 @@
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
- * @flow
  */
+'use strict';
 
-import React, { Component } from 'react';
-import {
-  AppRegistry,  // 注册
-  StyleSheet,   // 样式
-  Text,  // 文本组件
-  View,   // 视图组件
-  Image,
-  TextInput,
-} from 'react-native';
+var React = require('react-native');
+var {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View,
+} = React;
 
-
-class AHelloWorld extends Component {
-  // 初始化方法 ---> viewDidLoad ---> 返回具体的组件内容
-  // 写结构和内容
-  render() {
-    // 返回
+var SampleApp = React.createClass({
+  render: function() {
     return (
-        <View style={styles.container}>
-          <Text style={styles.welcome}>
-          你好,世界!
-          </Text>
-        </View>
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          你好!
+        </Text>
+        <Text style={styles.instructions}>
+          To get started, edit index.ios.js{'\n'}
+          Press Cmd+R to reload
+        </Text>
+      </View>
     );
   }
-}
-
-const  newStyle = StyleSheet.create({
-
 });
 
-const styles = StyleSheet.create({
+var styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'red',
+    backgroundColor: '#F5FCFF',
   },
   welcome: {
-    fontSize: 30,
+    fontSize: 20,
     textAlign: 'center',
-    margin: 20,
-  }
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+  },
 });
 
-AppRegistry.registerComponent('AHelloWorld', () => AHelloWorld);
+AppRegistry.registerComponent('AHelloWorld', () => SampleApp);
