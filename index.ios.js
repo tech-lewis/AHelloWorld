@@ -17,7 +17,7 @@ var SampleApp = React.createClass({
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          你好!
+          你好! World
         </Text>
         <Text style={styles.instructions}>
           To get started, edit index.ios.js{'\n'}
@@ -46,4 +46,4 @@ var styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('AHelloWorld', () => SampleApp);
+AppRegistry.registerComponent('AImageDemo', () => SampleApp);
