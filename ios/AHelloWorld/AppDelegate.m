@@ -16,15 +16,22 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   NSURL *jsCodeLocation;
-//  jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"];
-  jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+  jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/Examples/SampleApp/index.ios.bundle"];
+  
+  // OPTION 2
+  // Load from pre-bundled file on disk. To re-generate the static bundle, run
+  //
+  // $ curl http://localhost:8081/Examples/SampleApp/index.ios.bundle -o main.jsbundle
+  //
+  // and uncomment the next following line
+  // jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+  
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
-                                                      moduleName:@"AHelloWorld"
-                                               initialProperties:nil
+                                                      moduleName:@"SampleApp"
                                                    launchOptions:launchOptions];
-
+  
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-  UIViewController *rootViewController = [UIViewController new];
+  UIViewController *rootViewController = [[UIViewController alloc] init];
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
