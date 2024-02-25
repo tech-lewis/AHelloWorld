@@ -30,8 +30,8 @@
   //
   // and uncomment the next following line
 //   jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
-//  NSString *path = [[self sandboxFilePath] stringByAppendingPathComponent:@"main.bundle"];
-//  jsCodeLocation = [NSURL URLWithString:path];
+  NSString *path = [[self sandboxFilePath] stringByAppendingPathComponent:@"main.jsbundle"];
+  jsCodeLocation = [NSURL fileURLWithPath:path];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"AHelloWorld"
                                                    launchOptions:launchOptions];

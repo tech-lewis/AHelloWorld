@@ -948,16 +948,16 @@ var $__0=
   
   React,AppRegistry=$__0.AppRegistry,StyleSheet=$__0.StyleSheet,Text=$__0.Text,View=$__0.View;
 
-var SampleApp = React.createClass({displayName: "SampleApp",
+var AHelloWorld = React.createClass({displayName: "AHelloWorld",
   render: function() {
     return (
       React.createElement(View, {style: styles.container}, 
         React.createElement(Text, {style: styles.welcome}, 
-          "浣犲ソ!"
+          "Welcome to React Native!"
         ), 
         React.createElement(Text, {style: styles.instructions}, 
           "To get started, edit index.ios.js", '\n', 
-          "Press Cmd+R to reload"
+          "晃动手机刷新脚本"
         )
       )
     );
@@ -974,6 +974,7 @@ var styles = StyleSheet.create({
   welcome: {
     fontSize: 20,
     textAlign: 'center',
+    fontWeight: '800',
     margin: 10,
   },
   instructions: {
@@ -982,7 +983,7 @@ var styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('AHelloWorld', function()  {return SampleApp;});
+AppRegistry.registerComponent('AHelloWorld', function()  {return AHelloWorld;});
 });
 __d('react-native/Libraries/react-native/react-native',["React","ActivityIndicatorIOS","DatePickerIOS","Image","ListView","MapView","NavigatorIOS","PickerIOS","Navigator","ScrollView","SliderIOS","SwitchIOS","TabBarIOS","Text","TextInput","TouchableHighlight","TouchableOpacity","TouchableWithoutFeedback","View","WebView","AlertIOS","Animation","AppRegistry","AppStateIOS","AsyncStorage","CameraRoll","InteractionManager","LinkingIOS","LayoutAnimation","NetInfo","PixelRatio","PushNotificationIOS","PanResponder","StatusBarIOS","StyleSheet","VibrationIOS","RCTDeviceEventEmitter","NativeModules","LinkedStateMixin","ReactComponentWithPureRenderMixin","NativeModules","ReactUpdates","cloneWithProps","update","ReactDefaultPerf","ReactTestUtils"],function(global, require, requireDynamic, requireLazy, module, exports) {  /**
  * Copyright (c) 2015-present, Facebook, Inc.
@@ -6682,7 +6683,7 @@ __d('EventSubscription',[],function(global, require, requireDynamic, requireLazy
 module.exports = EventSubscription;
 });
 __d('ErrorUtils',[],function(global, require, requireDynamic, requireLazy, module, exports) {  /**
- * Copyright 2013-2015, Facebook, Inc.
+ * Copyright (c) 2015-present, Facebook, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
@@ -6692,20 +6693,22 @@ __d('ErrorUtils',[],function(global, require, requireDynamic, requireLazy, modul
  * @providesModule ErrorUtils
  */
 
-/* jslint unused:false */
+var GLOBAL = this;
 
-"use strict";
-
-var ErrorUtils = {
-  applyWithGuard: function (callback, context, args, onError, name) {
-    return callback.apply(context, args);
-  },
-  guard: function (callback, name) {
-    return callback;
-  }
-};
-
-module.exports = ErrorUtils;});
+/**
+ * The particular require runtime that we are using looks for a global
+ * `ErrorUtils` object and if it exists, then it requires modules with the
+ * error handler specified via ErrorUtils.setGlobalHandler by calling the
+ * require function with applyWithGuard. Since the require module is loaded
+ * before any of the modules, this ErrorUtils must be defined (and the handler
+ * set) globally before requiring anything.
+ *
+ * However, we still want to treat ErrorUtils as a module so that other modules
+ * that use it aren't just using a global variable, so simply export the global
+ * variable here. ErrorUtils is original defined in a file named error-guard.js.
+ */
+module.exports = GLOBAL.ErrorUtils;
+});
 __d('EventSubscriptionVendor',["invariant"],function(global, require, requireDynamic, requireLazy, module, exports) {  /**
  * @generated SignedSource<<24d5cc1cdd24704296686faf89dd36cf>>
  *
@@ -6817,6 +6820,7 @@ __d('ExceptionsManager',["Platform","NativeModules","loadSourceMap","parseErrorS
  * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ExceptionsManager
+ * @flow
  */
 'use strict';
 
@@ -6828,7 +6832,13 @@ var parseErrorStack = require('parseErrorStack');
 
 var sourceMapPromise;
 
-function handleException(e) {
+                  
+                    
+               
+                  
+ 
+
+function handleException(e           ) {
   var stack = parseErrorStack(e);
   console.error(
     'Error: ' +
@@ -10797,63 +10807,75 @@ void (function(root, factory) {
 
 })();
 });
-__d('fetch',["whatwg-fetch/fetch"],function(global, require, requireDynamic, requireLazy, module, exports) {  /**
- * Copyright 2013-2015, Facebook, Inc.
+__d('fetch',[],function(global, require, requireDynamic, requireLazy, module, exports) {  /**
+ * Copyright (c) 2015-present, Facebook, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the BSD-style license found in the
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
+ * This is a third-party polyfill grabbed from:
+ * https://github.com/github/fetch
+ *
  * @providesModule fetch
+ * @nolint
  */
-
 'use strict';
 
-require('whatwg-fetch/fetch');
-module.exports = self.fetch.bind(self);});
-__d('whatwg-fetch/fetch',[],function(global, require, requireDynamic, requireLazy, module, exports) {  (function() {
+var self = {};
+
+/**
+ * Copyright (c) 2014 GitHub, Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * @preserve-header
+ */
+(function() {
   'use strict';
 
   if (self.fetch) {
     return
   }
 
-  function normalizeName(name) {
-    if (typeof name !== 'string') {
-      name = name.toString();
-    }
-    if (/[^a-z0-9\-#$%&'*+.\^_`|~]/i.test(name)) {
-      throw new TypeError('Invalid character in header field name')
-    }
-    return name.toLowerCase()
-  }
-
-  function normalizeValue(value) {
-    if (typeof value !== 'string') {
-      value = value.toString();
-    }
-    return value
-  }
-
   function Headers(headers) {
     this.map = {}
 
+    var self = this
     if (headers instanceof Headers) {
-      headers.forEach(function(value, name) {
-        this.append(name, value)
-      }, this)
+      headers.forEach(function(name, values) {
+        values.forEach(function(value) {
+          self.append(name, value)
+        })
+      })
 
     } else if (headers) {
       Object.getOwnPropertyNames(headers).forEach(function(name) {
-        this.append(name, headers[name])
-      }, this)
+        self.append(name, headers[name])
+      })
     }
   }
 
   Headers.prototype.append = function(name, value) {
-    name = normalizeName(name)
-    value = normalizeValue(value)
+    name = name.toLowerCase()
     var list = this.map[name]
     if (!list) {
       list = []
@@ -10863,32 +10885,32 @@ __d('whatwg-fetch/fetch',[],function(global, require, requireDynamic, requireLaz
   }
 
   Headers.prototype['delete'] = function(name) {
-    delete this.map[normalizeName(name)]
+    delete this.map[name.toLowerCase()]
   }
 
   Headers.prototype.get = function(name) {
-    var values = this.map[normalizeName(name)]
+    var values = this.map[name.toLowerCase()]
     return values ? values[0] : null
   }
 
   Headers.prototype.getAll = function(name) {
-    return this.map[normalizeName(name)] || []
+    return this.map[name.toLowerCase()] || []
   }
 
   Headers.prototype.has = function(name) {
-    return this.map.hasOwnProperty(normalizeName(name))
+    return this.map.hasOwnProperty(name.toLowerCase())
   }
 
   Headers.prototype.set = function(name, value) {
-    this.map[normalizeName(name)] = [normalizeValue(value)]
+    this.map[name.toLowerCase()] = [value]
   }
 
-  Headers.prototype.forEach = function(callback, thisArg) {
+  // Instead of iterable for now.
+  Headers.prototype.forEach = function(callback) {
+    var self = this
     Object.getOwnPropertyNames(this.map).forEach(function(name) {
-      this.map[name].forEach(function(value) {
-        callback.call(thisArg, value, name, this)
-      }, this)
-    }, this)
+      callback(name, self.map[name])
+    })
   }
 
   function consumed(body) {
@@ -10921,51 +10943,22 @@ __d('whatwg-fetch/fetch',[],function(global, require, requireDynamic, requireLaz
     return fileReaderReady(reader)
   }
 
-  var support = {
-    blob: 'FileReader' in self && 'Blob' in self && (function() {
-      try {
-        new Blob();
-        return true
-      } catch(e) {
-        return false
-      }
-    })(),
-    formData: 'FormData' in self
-  }
+  var blobSupport = 'FileReader' in self && 'Blob' in self && (function() {
+    try {
+      new Blob();
+      return true
+    } catch(e) {
+      return false
+    }
+  })();
 
   function Body() {
     this.bodyUsed = false
 
-
-    this._initBody = function(body) {
-      this._bodyInit = body
-      if (typeof body === 'string') {
-        this._bodyText = body
-      } else if (support.blob && Blob.prototype.isPrototypeOf(body)) {
-        this._bodyBlob = body
-      } else if (support.formData && FormData.prototype.isPrototypeOf(body)) {
-        this._bodyFormData = body
-      } else if (!body) {
-        this._bodyText = ''
-      } else {
-        throw new Error('unsupported BodyInit type')
-      }
-    }
-
-    if (support.blob) {
+    if (blobSupport) {
       this.blob = function() {
         var rejected = consumed(this)
-        if (rejected) {
-          return rejected
-        }
-
-        if (this._bodyBlob) {
-          return Promise.resolve(this._bodyBlob)
-        } else if (this._bodyFormData) {
-          throw new Error('could not read FormData body as blob')
-        } else {
-          return Promise.resolve(new Blob([this._bodyText]))
-        }
+        return rejected ? rejected : Promise.resolve(this._bodyBlob)
       }
 
       this.arrayBuffer = function() {
@@ -10973,18 +10966,7 @@ __d('whatwg-fetch/fetch',[],function(global, require, requireDynamic, requireLaz
       }
 
       this.text = function() {
-        var rejected = consumed(this)
-        if (rejected) {
-          return rejected
-        }
-
-        if (this._bodyBlob) {
-          return readBlobAsText(this._bodyBlob)
-        } else if (this._bodyFormData) {
-          throw new Error('could not read FormData body as text')
-        } else {
-          return Promise.resolve(this._bodyText)
-        }
+        return this.blob().then(readBlobAsText)
       }
     } else {
       this.text = function() {
@@ -10993,7 +10975,7 @@ __d('whatwg-fetch/fetch',[],function(global, require, requireDynamic, requireLaz
       }
     }
 
-    if (support.formData) {
+    if ('FormData' in self) {
       this.formData = function() {
         return this.text().then(decode)
       }
@@ -11017,17 +10999,12 @@ __d('whatwg-fetch/fetch',[],function(global, require, requireDynamic, requireLaz
   function Request(url, options) {
     options = options || {}
     this.url = url
-
+    this._body = options.body
     this.credentials = options.credentials || 'omit'
     this.headers = new Headers(options.headers)
     this.method = normalizeMethod(options.method || 'GET')
     this.mode = options.mode || null
     this.referrer = null
-
-    if ((this.method === 'GET' || this.method === 'HEAD') && options.body) {
-      throw new TypeError('Body not allowed for GET or HEAD requests')
-    }
-    this._initBody(options.body)
   }
 
   function decode(body) {
@@ -11055,37 +11032,8 @@ __d('whatwg-fetch/fetch',[],function(global, require, requireDynamic, requireLaz
     return head
   }
 
-  Body.call(Request.prototype)
-
-  function Response(bodyInit, options) {
-    if (!options) {
-      options = {}
-    }
-
-    this._initBody(bodyInit)
-    this.type = 'default'
-    this.url = null
-    this.status = options.status
-    this.ok = this.status >= 200 && this.status < 300
-    this.statusText = options.statusText
-    this.headers = options.headers instanceof Headers ? options.headers : new Headers(options.headers)
-    this.url = options.url || ''
-  }
-
-  Body.call(Response.prototype)
-
-  self.Headers = Headers;
-  self.Request = Request;
-  self.Response = Response;
-
-  self.fetch = function(input, init) {
-    // TODO: Request constructor should accept input, init
-    var request
-    if (Request.prototype.isPrototypeOf(input) && !init) {
-      request = input
-    } else {
-      request = new Request(input, init)
-    }
+  Request.prototype.fetch = function() {
+    var self = this
 
     return new Promise(function(resolve, reject) {
       var xhr = new XMLHttpRequest()
@@ -11123,25 +11071,60 @@ __d('whatwg-fetch/fetch',[],function(global, require, requireDynamic, requireLaz
         reject(new TypeError('Network request failed'))
       }
 
-      xhr.open(request.method, request.url, true)
-
-      if (request.credentials === 'include') {
-        xhr.withCredentials = true
-      }
-
-      if ('responseType' in xhr && support.blob) {
+      xhr.open(self.method, self.url)
+      if ('responseType' in xhr && blobSupport) {
         xhr.responseType = 'blob'
       }
 
-      request.headers.forEach(function(value, name) {
-        xhr.setRequestHeader(name, value)
+      self.headers.forEach(function(name, values) {
+        values.forEach(function(value) {
+          xhr.setRequestHeader(name, value)
+        })
       })
 
-      xhr.send(typeof request._bodyInit === 'undefined' ? null : request._bodyInit)
+      xhr.send((self._body === undefined) ? null : self._body)
     })
+  }
+
+  Body.call(Request.prototype)
+
+  function Response(bodyInit, options) {
+    if (!options) {
+      options = {}
+    }
+
+    if (blobSupport) {
+      if (typeof bodyInit === 'string') {
+        this._bodyBlob = new Blob([bodyInit])
+      } else {
+        this._bodyBlob = bodyInit
+      }
+    } else {
+      this._bodyText = bodyInit
+    }
+    this.type = 'default'
+    this.url = null
+    this.status = options.status
+    this.statusText = options.statusText
+    this.headers = options.headers
+    this.url = options.url || ''
+  }
+
+  Body.call(Response.prototype)
+
+  self.Headers = Headers;
+  self.Request = Request;
+  self.Response = Response;
+
+  self.fetch = function (url, options) {
+    return new Request(url, options).fetch()
   }
   self.fetch.polyfill = true
 })();
+
+/** End of the third-party code */
+
+module.exports = self.fetch;
 });
 __d('parseErrorStack',["stacktrace-parser/index"],function(global, require, requireDynamic, requireLazy, module, exports) {  /**
  * Copyright (c) 2015-present, Facebook, Inc.
@@ -11563,7 +11546,8 @@ var Geolocation = {
   getCurrentPosition: function(
     geo_success          ,
     geo_error           ,
-    geo_options         ) {
+    geo_options         
+  ) {
     invariant(
       typeof geo_success === 'function',
       'Must provide a valid geo_success callback.'
@@ -14050,6 +14034,7 @@ __d('InteractionManager',["ErrorUtils","EventEmitter","Set","invariant","keyMirr
  * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule InteractionManager
+ * @flow
  */
 'use strict';
 
@@ -14113,7 +14098,7 @@ var InteractionManager = {
   /**
    * Schedule a function to run after all interactions have completed.
    */
-  runAfterInteractions:function(callback) {
+  runAfterInteractions:function(callback          ) {
     invariant(
       typeof callback === 'function',
       'Must specify a function to schedule.'
@@ -14125,7 +14110,7 @@ var InteractionManager = {
   /**
    * Notify manager that an interaction has started.
    */
-  createInteractionHandle:function() {
+  createInteractionHandle:function()         {
     scheduleUpdate();
     var handle = ++_inc;
     _addInteractionSet.add(handle);
@@ -14135,7 +14120,7 @@ var InteractionManager = {
   /**
    * Notify manager that an interaction has completed.
    */
-  clearInteractionHandle:function(handle) {
+  clearInteractionHandle:function(handle        ) {
     invariant(
       !!handle,
       'Must provide a handle to clear.'
@@ -19226,6 +19211,7 @@ __d('ImageStylePropTypes',["ImageResizeMode","LayoutPropTypes","ReactPropTypes"]
  * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ImageStylePropTypes
+ * @flow
  */
 'use strict';
 
@@ -19258,8 +19244,8 @@ var unsupportedProps = Object.keys({
   paddingHorizontal: null,
 });
 
-for (var key in unsupportedProps) {
-  delete ImageStylePropTypes[key];
+for (var i = 0; i < unsupportedProps.length; i++) {
+  delete ImageStylePropTypes[unsupportedProps[i]];
 }
 
 module.exports = ImageStylePropTypes;
@@ -19273,6 +19259,7 @@ __d('ImageResizeMode',["keyMirror"],function(global, require, requireDynamic, re
  * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule ImageResizeMode
+ * @flow
  */
 'use strict';
 
@@ -21245,6 +21232,7 @@ __d('Image',["EdgeInsetsPropType","NativeMethodsMixin","NativeModules","ReactPro
  * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule Image
+ * @flow
  */
 'use strict';
 
@@ -21344,7 +21332,9 @@ var Image = React.createClass({displayName: "Image",
 
   render: function() {
     var style = flattenStyle([styles.base, this.props.style]);
+    invariant(style, "style must be initialized");
     var source = this.props.source;
+    invariant(source, "source must be initialized");
     var isNetwork = source.uri && source.uri.match(/^https?:/);
     invariant(
       !(isNetwork && source.isStatic),
@@ -24822,20 +24812,20 @@ var styles = StyleSheet.create({
 });
 
 /**
- * Use `ReactNavigator` to transition between different scenes in your app. To
+ * Use `Navigator` to transition between different scenes in your app. To
  * accomplish this, provide route objects to the navigator to identify each
  * scene, and also a `renderScene` function that the navigator can use to
  * render the scene for a given route.
  *
  * To change the animation or gesture properties of the scene, provide a
  * `configureScene` prop to get the config object for a given route. See
- * `ReactNavigator.SceneConfigs` for default animations and more info on
+ * `Navigator.SceneConfigs` for default animations and more info on
  * scene config options.
  *
  * ### Basic Usage
  *
  * ```
- *   <ReactNavigator
+ *   <Navigator
  *     initialRoute={{name: 'My First Scene', index: 0}}
  *     renderScene={(route, navigator) =>
  *       <MySceneComponent
@@ -24859,7 +24849,7 @@ var styles = StyleSheet.create({
  *
  * ### Navigation Methods
  *
- * `ReactNavigator` can be told to navigate in two ways. If you have a ref to
+ * `Navigator` can be told to navigate in two ways. If you have a ref to
  * the element, you can invoke several methods on it to trigger navigation:
  *
  *  - `jumpBack()` - Jump backward without unmounting the current scene
@@ -24901,7 +24891,7 @@ var Navigator = React.createClass({displayName: "Navigator",
      * configuration object
      *
      * ```
-     * (route) => ReactNavigator.SceneConfigs.FloatFromRight
+     * (route) => Navigator.SceneConfigs.FloatFromRight
      * ```
      */
     configureScene: PropTypes.func,
@@ -24957,7 +24947,7 @@ var Navigator = React.createClass({displayName: "Navigator",
     navigationBar: PropTypes.node,
 
     /**
-     * Optionally provide the navigator object from a parent ReactNavigator
+     * Optionally provide the navigator object from a parent Navigator
      */
     navigator: PropTypes.object,
 
@@ -25043,7 +25033,7 @@ var Navigator = React.createClass({displayName: "Navigator",
       parentNavigator: this.props.navigator,
       // We want to bubble focused routes to the top navigation stack. If we
       // are a child navigator, this allows us to call props.navigator.on*Focus
-      // of the topmost ReactNavigator
+      // of the topmost Navigator
       onWillFocus: this.props.onWillFocus,
       onDidFocus: this.props.onDidFocus,
     };
@@ -25807,6 +25797,7 @@ __d('InteractionMixin',["InteractionManager"],function(global, require, requireD
  * Copyright 2004-present Facebook. All Rights Reserved.
  *
  * @providesModule InteractionMixin
+ * @flow
  */
 'use strict';
 
@@ -25826,7 +25817,7 @@ var InteractionMixin = {
     }
   },
 
-  _interactionMixinHandles: [],
+  _interactionMixinHandles: ([]               ),
 
   createInteractionHandle: function() {
     var handle = InteractionManager.createInteractionHandle();
@@ -25834,7 +25825,7 @@ var InteractionMixin = {
     return handle;
   },
 
-  clearInteractionHandle: function(clearHandle) {
+  clearInteractionHandle: function(clearHandle        ) {
     InteractionManager.clearInteractionHandle(clearHandle);
     this._interactionMixinHandles = this._interactionMixinHandles.filter(
       function(handle)  {return handle !== clearHandle;}
@@ -25846,7 +25837,7 @@ var InteractionMixin = {
    *
    * @param {function} callback
    */
-  runAfterInteractions: function(callback) {
+  runAfterInteractions: function(callback          ) {
     InteractionManager.runAfterInteractions(callback);
   },
 };
@@ -32490,10 +32481,10 @@ __d('joinClasses',[],function(global, require, requireDynamic, requireLazy, modu
  * Combines multiple className strings into one.
  * http://jsperf.com/joinclasses-args-vs-array
  *
- * @param {...?string} className
+ * @param {...?string} classes
  * @return {string}
  */
-function joinClasses(className /*, ... */) {
+function joinClasses(className/*, ... */) {
   if (!className) {
     className = '';
   }
@@ -32510,7 +32501,8 @@ function joinClasses(className /*, ... */) {
   return className;
 }
 
-module.exports = joinClasses;});
+module.exports = joinClasses;
+});
 __d('ensureComponentIsNative',["invariant"],function(global, require, requireDynamic, requireLazy, module, exports) {  /**
  * Copyright (c) 2015-present, Facebook, Inc.
  * All rights reserved.
@@ -32704,13 +32696,17 @@ __d('POPAnimationMixin',["POPAnimation","invariant","warning"],function(global, 
  */
 'use strict';
 
-var POPAnimation = require('POPAnimation');
+var POPAnimationOrNull = require('POPAnimation');
 
-if (!POPAnimation) {
+if (!POPAnimationOrNull) {
   // POP animation isn't available in the OSS fork - this is a temporary
   // workaround to enable its availability to be determined at runtime.
   module.exports = (null      );
 } else {
+
+// At this point, POPAnimationOrNull is guaranteed to be
+// non-null. Bring it local to preserve type refinement.
+var POPAnimation = POPAnimationOrNull;
 
 var invariant = require('invariant');
 var warning = require('warning');
@@ -32955,6 +32951,7 @@ __d('POPAnimation',["NativeModules","ReactPropTypes","createStrictShapeTypeCheck
  * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule POPAnimation
+ * @flow
  */
 'use strict';
 
@@ -32962,7 +32959,7 @@ var RCTPOPAnimationManager = require('NativeModules').POPAnimationManager;
 if (!RCTPOPAnimationManager) {
   // POP animation isn't available in the OSS fork - this is a temporary
   // workaround to enable its availability to be determined at runtime.
-  module.exports = null;
+  module.exports = (null         );
 } else {
 
 var ReactPropTypes = require('ReactPropTypes');
@@ -33012,6 +33009,20 @@ var Types = {
   spring: RCTTypes.spring,
 };
 
+              
+                             
+                                      
+                  
+                
+                 
+                 
+                     
+                         
+                         
+                     
+                        
+ 
+
 var POPAnimation = {
   Types: Types,
   Properties: Properties,
@@ -33031,11 +33042,11 @@ var POPAnimation = {
   }),
 
   lastUsedTag: 0,
-  allocateTagForAnimation: function() {
+  allocateTagForAnimation: function()         {
     return ++this.lastUsedTag;
   },
 
-  createAnimation: function(typeName, attrs) {
+  createAnimation: function(typeName        , attrs       )         {
     var tag = this.allocateTagForAnimation();
 
     if (__DEV__) {
@@ -33055,35 +33066,35 @@ var POPAnimation = {
     return tag;
   },
 
-  createSpringAnimation: function(attrs) {
+  createSpringAnimation: function(attrs       )         {
     return this.createAnimation(this.Types.spring, attrs);
   },
 
-  createDecayAnimation: function(attrs) {
+  createDecayAnimation: function(attrs       )         {
     return this.createAnimation(this.Types.decay, attrs);
   },
 
-  createLinearAnimation: function(attrs) {
+  createLinearAnimation: function(attrs       )         {
     return this.createAnimation(this.Types.linear, attrs);
   },
 
-  createEaseInAnimation: function(attrs) {
+  createEaseInAnimation: function(attrs       )         {
     return this.createAnimation(this.Types.easeIn, attrs);
   },
 
-  createEaseOutAnimation: function(attrs) {
+  createEaseOutAnimation: function(attrs       )         {
     return this.createAnimation(this.Types.easeOut, attrs);
   },
 
-  createEaseInEaseOutAnimation: function(attrs) {
+  createEaseInEaseOutAnimation: function(attrs       )         {
     return this.createAnimation(this.Types.easeInEaseOut, attrs);
   },
 
-  addAnimation: function(nodeHandle, anim, callback) {
+  addAnimation: function(nodeHandle     , anim        , callback          ) {
     RCTPOPAnimationManager.addAnimation(nodeHandle, anim, callback);
   },
 
-  removeAnimation: function(nodeHandle, anim) {
+  removeAnimation: function(nodeHandle     , anim        ) {
     RCTPOPAnimationManager.removeAnimation(nodeHandle, anim);
   },
 };
@@ -36796,74 +36807,8 @@ var _initialURL = RCTLinkingManager &&
 
 var DEVICE_NOTIF_EVENT = 'openURL';
 
-/**
- * `LinkingIOS` gives you an interface to interact with both incoming and
- * outgoing app links.
- *
- * ### Basic Usage
- *
- * #### Handling deep links
- *
- * If your app was launched from an external URL registered with your app, you can
- * access and handle it from any component you want with the following:
- *
- * ```
- * componentDidMount() {
- *   var url = LinkingIOS.popInitialURL();
- *   if (url) { ... }
- * }
- * ```
- *
- * If you also want to listen to incoming app links during your app's
- * execution you'll need to add the following lines to you `*AppDelegate.m`:
- *
- * ```
- * - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
- *   return [RCTLinkingManager application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
- * }
- * ```
- *
- * And in your React component, you'll then be able to listen to the events from
- * `LinkingIOS` as follows
- *
- * ```
- * componentDidMount() {
- *   LinkingIOS.addEventListener('url', this._handleOpenURL);
- * },
- * componentWillUnmount() {
- *   LinkingIOS.removeEventListener('url', this._handleOpenURL);
- * },
- * _handleOpenURL(event) {
- *   console.log(event.url);
- * }
- * ```
- *
- * #### Triggering App links
- *
- * To trigger an app link (browser, email, or custom schemes) you can call:
- *
- * ```
- * LinkingIOS.openURL(url)
- * ```
- *
- * If you want to check if a URL can be opened by an installed app on the system you can call
- * 
- * ```
- * LinkingIOS.canOpenURL(url, (supported) => {
- *   if (!supported) {
- *     AlertIOS.alert('Can\'t handle url: ' + url);
- *   } else {
- *     LinkingIOS.openURL(url);
- *   }
- * });
- * ```
- */
 function LinkingIOS(){}
-  /**
-   * Add a handler to LinkingIOS changes by listening to the `url` event type
-   * and providing the handler
-   */
-  LinkingIOS.addEventListener=function(type        , handler          ) {
+  LinkingIOS.addEventListener=function(type, handler) {
     invariant(
       type === 'url',
       'LinkingIOS only supports `url` events'
@@ -36876,10 +36821,7 @@ function LinkingIOS(){}
     );
   };
 
-  /**
-   * Remove a handler by passing the `url` event type and the handler
-   */
-  LinkingIOS.removeEventListener=function(type        , handler           ) {
+  LinkingIOS.removeEventListener=function(type, handler) {
     invariant(
       type === 'url',
       'LinkingIOS only supports `url` events'
@@ -36891,12 +36833,7 @@ function LinkingIOS(){}
     _notifHandlers[handler] = null;
   };
 
-  /**
-   * Try to open the given `url` with any of the installed apps.
-   * If multiple applications can open `url`, the one that opens
-   * is undefined.
-   */
-  LinkingIOS.openURL=function(url        ) {
+  LinkingIOS.openURL=function(url) {
     invariant(
       typeof url === 'string',
       'Invalid url: should be a string'
@@ -36904,11 +36841,7 @@ function LinkingIOS(){}
     RCTLinkingManager.openURL(url);
   };
 
-  /**
-   * Determine whether an installed app can handle a given `url`.
-   * The callback function will be called with `bool supported` as the only argument
-   */
-  LinkingIOS.canOpenURL=function(url        , callback          ) {
+  LinkingIOS.canOpenURL=function(url, callback) {
     invariant(
       typeof url === 'string',
       'Invalid url: should be a string'
@@ -36920,11 +36853,7 @@ function LinkingIOS(){}
     RCTLinkingManager.canOpenURL(url, callback);
   };
 
-  /**
-   * If the app launch was triggered by an app link, it will pop the link URL,
-   * otherwise it will return `null`
-   */
-  LinkingIOS.popInitialURL=function()          {
+  LinkingIOS.popInitialURL=function() {
     var initialURL = _initialURL;
     _initialURL = null;
     return initialURL;
@@ -37762,47 +37691,40 @@ __d('shallowEqual',[],function(global, require, requireDynamic, requireLazy, mod
  * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @providesModule shallowEqual
- * @typechecks
- * 
  */
 
 'use strict';
 
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-
 /**
- * Performs equality by iterating through keys on an object and returning false
- * when any key has values which are not strictly equal between the arguments.
- * Returns true when the values of all keys are strictly equal.
+ * Performs equality by iterating through keys on an object and returning
+ * false when any key has values which are not strictly equal between
+ * objA and objB. Returns true when the values of all keys are strictly equal.
+ *
+ * @return {boolean}
  */
 function shallowEqual(objA, objB) {
   if (objA === objB) {
     return true;
   }
-
-  if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
-    return false;
-  }
-
-  var keysA = Object.keys(objA);
-  var keysB = Object.keys(objB);
-
-  if (keysA.length !== keysB.length) {
-    return false;
-  }
-
+  var key;
   // Test for A's keys different from B.
-  var bHasOwnProperty = hasOwnProperty.bind(objB);
-  for (var i = 0; i < keysA.length; i++) {
-    if (!bHasOwnProperty(keysA[i]) || objA[keysA[i]] !== objB[keysA[i]]) {
+  for (key in objA) {
+    if (objA.hasOwnProperty(key) &&
+        (!objB.hasOwnProperty(key) || objA[key] !== objB[key])) {
       return false;
     }
   }
-
+  // Test for B's keys missing from A.
+  for (key in objB) {
+    if (objB.hasOwnProperty(key) && !objA.hasOwnProperty(key)) {
+      return false;
+    }
+  }
   return true;
 }
 
-module.exports = shallowEqual;});
+module.exports = shallowEqual;
+});
 __d('update',["Object.assign","keyOf","invariant"],function(global, require, requireDynamic, requireLazy, module, exports) {  /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.

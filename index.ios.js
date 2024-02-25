@@ -12,16 +12,16 @@ var {
   View,
 } = React;
 
-var SampleApp = React.createClass({
+var AHelloWorld = React.createClass({
   render: function() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          你好! World
+          Welcome to React Native!
         </Text>
         <Text style={styles.instructions}>
           To get started, edit index.ios.js{'\n'}
-          Press Cmd+R to reload
+          晃动手机更新
         </Text>
       </View>
     );
@@ -38,6 +38,7 @@ var styles = StyleSheet.create({
   welcome: {
     fontSize: 20,
     textAlign: 'center',
+    fontWeight: '800',
     margin: 10,
   },
   instructions: {
@@ -46,4 +47,4 @@ var styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('AImageDemo', () => SampleApp);
+AppRegistry.registerComponent('AHelloWorld', () => AHelloWorld);
