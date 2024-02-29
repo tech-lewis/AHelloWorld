@@ -680,6 +680,7 @@
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 				);
 				INFOPLIST_FILE = AHelloWorld/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Navigator;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 0.0.1;
 				OTHER_LDFLAGS = "-ObjC";
@@ -701,6 +702,7 @@
 					"$(SRCROOT)/../node_modules/react-native-svg/ios/**",
 				);
 				INFOPLIST_FILE = AHelloWorld/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Navigator;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 0.0.1;
 				OTHER_LDFLAGS = "-ObjC";

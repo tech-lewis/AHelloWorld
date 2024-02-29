@@ -26,7 +26,7 @@ RCT_EXPORT_METHOD(RNOpenWebView:(NSString *)msg)
     if (msg.length && [msg hasPrefix:@"http"]) {
       [webController loadRequestWithUrlString:msg];
     } else {
-      [webController loadRequestWithUrlString:@"https://so.toutiao.com/s/"];
+      [webController loadRequestWithUrlString:@"https://so.toutiao.com/"];
     }
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:webController];
     [delegate.window.rootViewController presentViewController:navController animated:true completion:NULL];
