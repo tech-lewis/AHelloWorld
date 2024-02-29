@@ -6,8 +6,7 @@
 
 import React, { Component } from 'react';
 import { AppRegistry, View, TextInput, Button, Text, StyleSheet } from 'react-native';
-
-// import HexConverter from './lib/main'
+import Main from './lib/main'
 
 class AHelloWorld extends Component {
   // 初始化方法 ---> viewDidLoad ---> 返回具体的组件内容
@@ -37,6 +36,7 @@ class AHelloWorld extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Main/>
         <Text style={styles.title}>{this.state.binaryTitle}</Text>
         <TextInput style={styles.input} onChangeText={binary => {
           if (/^[01]*$/.test(binary)) {
