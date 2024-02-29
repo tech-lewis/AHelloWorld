@@ -22,15 +22,18 @@
 #pragma mark - Lifecycle
 - (void)viewWillAppear:(BOOL)animated
 {
-  [super viewWillAppear:animated];
-  self.webView.frame = self.view.bounds;
-  [self.view addSubview:self.webView];
-}
+  [super viewWillAppear:animated];}
 
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(dismiss)];
+  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(dismiss)];
+  self.title = @"Web Browser";
+  self.edgesForExtendedLayout = false;
+//  if ([[UIDevice currentDevice].systemVersion doubleValue] >= 11) self.webView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+  self.webView.frame = self.view.bounds;
+  [self.view addSubview:self.webView];
+
 }
 // 防止WebView崩溃的方法
 - (void)webViewAddMethods{

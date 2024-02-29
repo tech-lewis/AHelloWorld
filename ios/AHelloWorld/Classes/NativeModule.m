@@ -10,8 +10,12 @@
 #import "RCTBridgeModule.h"
 #import "AppDelegate.h"
 #import "WebBrowserViewController.h"
+//#import "RCTBridgeModule.h"
+@interface NativeModule()<RCTBridgeModule>
+@end
 @implementation NativeModule
-
+// 这句代码是必须的 用来导出 module, 这样才能在 RN 中访问 nativeModule这个 module
+RCT_EXPORT_MODULE(NativeModule);
 RCT_EXPORT_METHOD(RNOpenWebView:(NSString *)msg)
 {
   dispatch_async(dispatch_get_main_queue(), ^{
@@ -19,7 +23,11 @@ RCT_EXPORT_METHOD(RNOpenWebView:(NSString *)msg)
 //    [delegate.navController pushViewController: gameController
 //                                      animated:true];
     WebBrowserViewController *webController = [WebBrowserViewController new];
-    [webController loadRequestWithUrlString:@"https://www.baidu.com/s?wd=当地时间"];
+    if (msg.length && [msg hasPrefix:@"hhtp"]) {
+      [webController loadRequestWithUrlString:msg];
+    } else {
+      [webController loadRequestWithUrlString:@"https://so.toutiao.com/s/"];
+    }
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:webController];
     [delegate.window.rootViewController presentViewController:navController animated:true completion:NULL];
   });
