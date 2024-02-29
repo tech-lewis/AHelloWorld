@@ -23,7 +23,7 @@ RCT_EXPORT_METHOD(RNOpenWebView:(NSString *)msg)
 //    [delegate.navController pushViewController: gameController
 //                                      animated:true];
     WebBrowserViewController *webController = [WebBrowserViewController new];
-    if (msg.length && [msg hasPrefix:@"hhtp"]) {
+    if (msg.length && [msg hasPrefix:@"http"]) {
       [webController loadRequestWithUrlString:msg];
     } else {
       [webController loadRequestWithUrlString:@"https://so.toutiao.com/s/"];
