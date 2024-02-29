@@ -23,6 +23,7 @@
 		4D274FD02B90F351003D25F6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D274FCE2B90F351003D25F6 /* main.m */; };
 		4D274FD12B90F351003D25F6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D274FCF2B90F351003D25F6 /* AppDelegate.m */; };
 		4D274FD42B90F371003D25F6 /* NativeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D274FD32B90F371003D25F6 /* NativeModule.m */; };
+		4D274FD72B90F66D003D25F6 /* WebBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D274FD62B90F66D003D25F6 /* WebBrowserViewController.m */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 /* End PBXBuildFile section */
 
@@ -129,6 +130,8 @@
 		4D274FCF2B90F351003D25F6 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4D274FD22B90F371003D25F6 /* NativeModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NativeModule.h; sourceTree = "<group>"; };
 		4D274FD32B90F371003D25F6 /* NativeModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NativeModule.m; sourceTree = "<group>"; };
+		4D274FD52B90F66D003D25F6 /* WebBrowserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebBrowserViewController.h; sourceTree = "<group>"; };
+		4D274FD62B90F66D003D25F6 /* WebBrowserViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebBrowserViewController.m; sourceTree = "<group>"; };
 		523812756E874379BD8B4554 /* libRNSVG.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSVG.a; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
@@ -272,6 +275,8 @@
 				4D274FCE2B90F351003D25F6 /* main.m */,
 				4D274FD22B90F371003D25F6 /* NativeModule.h */,
 				4D274FD32B90F371003D25F6 /* NativeModule.m */,
+				4D274FD52B90F66D003D25F6 /* WebBrowserViewController.h */,
+				4D274FD62B90F66D003D25F6 /* WebBrowserViewController.m */,
 			);
 			name = Classes;
 			path = AHelloWorld/Classes;
@@ -578,6 +583,7 @@
 			files = (
 				4D274FD42B90F371003D25F6 /* NativeModule.m in Sources */,
 				4D274FD12B90F351003D25F6 /* AppDelegate.m in Sources */,
+				4D274FD72B90F66D003D25F6 /* WebBrowserViewController.m in Sources */,
 				4D274FD02B90F351003D25F6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
