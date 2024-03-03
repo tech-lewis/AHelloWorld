@@ -24,6 +24,12 @@
 		4D274FD12B90F351003D25F6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D274FCF2B90F351003D25F6 /* AppDelegate.m */; };
 		4D274FD42B90F371003D25F6 /* NativeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D274FD32B90F371003D25F6 /* NativeModule.m */; };
 		4D274FD72B90F66D003D25F6 /* WebBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D274FD62B90F66D003D25F6 /* WebBrowserViewController.m */; };
+		4D9AF62C2B94702500AFECEC /* NearbyMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AF62B2B94702500AFECEC /* NearbyMapViewController.m */; };
+		4D9AF6582B9470C900AFECEC /* GLDiscernPointModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AF64E2B9470C900AFECEC /* GLDiscernPointModel.m */; };
+		4D9AF6592B9470C900AFECEC /* OpenCameraOrPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AF64F2B9470C900AFECEC /* OpenCameraOrPhoto.m */; };
+		4D9AF65A2B9470C900AFECEC /* MLTemplateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AF6522B9470C900AFECEC /* MLTemplateModel.m */; };
+		4D9AF65B2B9470C900AFECEC /* UIImage+GLProcessing.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AF6542B9470C900AFECEC /* UIImage+GLProcessing.m */; };
+		4D9AF65C2B9470C900AFECEC /* GLTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9AF6552B9470C900AFECEC /* GLTools.m */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +97,13 @@
 			remoteGlobalIDString = 83CBBA2E1A601D0E00E9B192;
 			remoteInfo = React;
 		};
+		4D51248F2B9241FF004ABD79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4BD1EAFDEBC64B0493952786 /* RNSVG.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0CF68AC11AF0540F00FF9E5C;
+			remoteInfo = RNSVG;
+		};
 		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
@@ -132,6 +145,19 @@
 		4D274FD32B90F371003D25F6 /* NativeModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NativeModule.m; sourceTree = "<group>"; };
 		4D274FD52B90F66D003D25F6 /* WebBrowserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebBrowserViewController.h; sourceTree = "<group>"; };
 		4D274FD62B90F66D003D25F6 /* WebBrowserViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebBrowserViewController.m; sourceTree = "<group>"; };
+		4D9AF62A2B94702500AFECEC /* NearbyMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NearbyMapViewController.h; sourceTree = "<group>"; };
+		4D9AF62B2B94702500AFECEC /* NearbyMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NearbyMapViewController.m; sourceTree = "<group>"; };
+		4D9AF64E2B9470C900AFECEC /* GLDiscernPointModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLDiscernPointModel.m; sourceTree = "<group>"; };
+		4D9AF64F2B9470C900AFECEC /* OpenCameraOrPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenCameraOrPhoto.m; sourceTree = "<group>"; };
+		4D9AF6502B9470C900AFECEC /* UIImage+GLProcessing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GLProcessing.h"; sourceTree = "<group>"; };
+		4D9AF6512B9470C900AFECEC /* GLDiscernPointModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLDiscernPointModel.h; sourceTree = "<group>"; };
+		4D9AF6522B9470C900AFECEC /* MLTemplateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLTemplateModel.m; sourceTree = "<group>"; };
+		4D9AF6532B9470C900AFECEC /* OpenCameraOrPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenCameraOrPhoto.h; sourceTree = "<group>"; };
+		4D9AF6542B9470C900AFECEC /* UIImage+GLProcessing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+GLProcessing.m"; sourceTree = "<group>"; };
+		4D9AF6552B9470C900AFECEC /* GLTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTools.m; sourceTree = "<group>"; };
+		4D9AF6562B9470C900AFECEC /* GLTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTools.h; sourceTree = "<group>"; };
+		4D9AF6572B9470C900AFECEC /* MLTemplateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLTemplateModel.h; sourceTree = "<group>"; };
+		4D9AF65D2B9470F300AFECEC /* MacroUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroUtils.h; sourceTree = "<group>"; };
 		523812756E874379BD8B4554 /* libRNSVG.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSVG.a; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
@@ -270,16 +296,53 @@
 		4D274FCC2B90F351003D25F6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4D9AF64C2B94707300AFECEC /* Maps */,
 				4D274FCD2B90F351003D25F6 /* AppDelegate.h */,
 				4D274FCF2B90F351003D25F6 /* AppDelegate.m */,
+				4D9AF65D2B9470F300AFECEC /* MacroUtils.h */,
 				4D274FCE2B90F351003D25F6 /* main.m */,
 				4D274FD22B90F371003D25F6 /* NativeModule.h */,
 				4D274FD32B90F371003D25F6 /* NativeModule.m */,
 				4D274FD52B90F66D003D25F6 /* WebBrowserViewController.h */,
 				4D274FD62B90F66D003D25F6 /* WebBrowserViewController.m */,
+				4D9AF62A2B94702500AFECEC /* NearbyMapViewController.h */,
+				4D9AF62B2B94702500AFECEC /* NearbyMapViewController.m */,
 			);
 			name = Classes;
 			path = AHelloWorld/Classes;
+			sourceTree = "<group>";
+		};
+		4D5124822B9241FC004ABD79 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4D5124902B9241FF004ABD79 /* libRNSVG.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4D9AF64C2B94707300AFECEC /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				4D9AF64D2B94708300AFECEC /* models */,
+			);
+			path = Maps;
+			sourceTree = "<group>";
+		};
+		4D9AF64D2B94708300AFECEC /* models */ = {
+			isa = PBXGroup;
+			children = (
+				4D9AF6512B9470C900AFECEC /* GLDiscernPointModel.h */,
+				4D9AF64E2B9470C900AFECEC /* GLDiscernPointModel.m */,
+				4D9AF6562B9470C900AFECEC /* GLTools.h */,
+				4D9AF6552B9470C900AFECEC /* GLTools.m */,
+				4D9AF6572B9470C900AFECEC /* MLTemplateModel.h */,
+				4D9AF6522B9470C900AFECEC /* MLTemplateModel.m */,
+				4D9AF6532B9470C900AFECEC /* OpenCameraOrPhoto.h */,
+				4D9AF64F2B9470C900AFECEC /* OpenCameraOrPhoto.m */,
+				4D9AF6502B9470C900AFECEC /* UIImage+GLProcessing.h */,
+				4D9AF6542B9470C900AFECEC /* UIImage+GLProcessing.m */,
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
@@ -450,6 +513,10 @@
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
+				{
+					ProductGroup = 4D5124822B9241FC004ABD79 /* Products */;
+					ProjectRef = 4BD1EAFDEBC64B0493952786 /* RNSVG.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -514,6 +581,13 @@
 			fileType = archive.ar;
 			path = libReact.a;
 			remoteRef = 146834031AC3E56700842450 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4D5124902B9241FF004ABD79 /* libRNSVG.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNSVG.a;
+			remoteRef = 4D51248F2B9241FF004ABD79 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {
@@ -582,8 +656,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D274FD42B90F371003D25F6 /* NativeModule.m in Sources */,
+				4D9AF6592B9470C900AFECEC /* OpenCameraOrPhoto.m in Sources */,
+				4D9AF65C2B9470C900AFECEC /* GLTools.m in Sources */,
+				4D9AF65A2B9470C900AFECEC /* MLTemplateModel.m in Sources */,
+				4D9AF62C2B94702500AFECEC /* NearbyMapViewController.m in Sources */,
 				4D274FD12B90F351003D25F6 /* AppDelegate.m in Sources */,
+				4D9AF65B2B9470C900AFECEC /* UIImage+GLProcessing.m in Sources */,
 				4D274FD72B90F66D003D25F6 /* WebBrowserViewController.m in Sources */,
+				4D9AF6582B9470C900AFECEC /* GLDiscernPointModel.m in Sources */,
 				4D274FD02B90F351003D25F6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

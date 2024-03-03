@@ -10,6 +10,7 @@
 #import "RCTBridgeModule.h"
 #import "AppDelegate.h"
 #import "WebBrowserViewController.h"
+#import "DiscoverDetailViewController.h"
 //#import "RCTBridgeModule.h"
 @interface NativeModule()<RCTBridgeModule>
 @end
