@@ -39,7 +39,8 @@
 - (void)viewDidLoad
 {
   self.title = @"当前位置";
-  self.navigationItem.leftBarButtonItem
+  // 设置
+  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(dismiss)];
   /*
    步骤：
 
