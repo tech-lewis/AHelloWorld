@@ -10,7 +10,8 @@
 #import "RCTBridgeModule.h"
 #import "AppDelegate.h"
 #import "WebBrowserViewController.h"
-#import "DiscoverDetailViewController.h"
+#import "NearbyMapViewController.h"
+
 //#import "RCTBridgeModule.h"
 @interface NativeModule()<RCTBridgeModule>
 @end
@@ -30,6 +31,18 @@ RCT_EXPORT_METHOD(RNOpenWebView:(NSString *)msg)
       [webController loadRequestWithUrlString:@"https://so.toutiao.com/"];
     }
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:webController];
+    [delegate.window.rootViewController presentViewController:navController animated:true completion:NULL];
+  });
+}
+
+RCT_EXPORT_METHOD(RNOpenMapView:(NSString *)msg)
+{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//    [delegate.navController pushViewController: gameController
+//                                      animated:true];
+    NearbyMapViewController *controller = [NearbyMapViewController new];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
     [delegate.window.rootViewController presentViewController:navController animated:true completion:NULL];
   });
 }
