@@ -10,6 +10,6 @@
     "react-native": "^0.25.1"
   },
   "devDependencies": {
-    "react-native-svg": "^2.0.0"
+    "react-native-svg": "1.1.0"
   }
 }
